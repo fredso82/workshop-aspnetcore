@@ -15,12 +15,20 @@ namespace WebAPIApplication.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetPessoas()
+        public async Task<IActionResult> ObterPessoas()
         {
             var pessoas = await _context.Pessoas.ToListAsync();
 
             return Json(pessoas);
+        }
 
+        [HttpPost]
+        public async Task<IActionResult> IncluirPessoa([FromBody]Pessoa modelo)        
+        {
+            await _context.Pessoas.AddAsync(modelo);
+            await _context.SaveChangesAsync();
+
+            return Json(modelo);
         }
 
     }

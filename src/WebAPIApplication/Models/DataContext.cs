@@ -8,6 +8,8 @@ namespace WebAPIApplication {
             
         }
         public DbSet<Pessoa> Pessoas { get; set; }
+
+        
         
     }
 }
